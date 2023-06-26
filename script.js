@@ -44,7 +44,7 @@ function drawField() {
 }
 
 function startLife() {
-
+    buttonStart.innerText='Старт'
     let mass2 = [];
     for (let i = 0; i < size; i++) {
 
@@ -76,6 +76,7 @@ function startLife() {
     count++;
     document.querySelector('#count').innerText = count;
     timer = setTimeout(startLife, 500);
+    buttonStart.disabled=true
 }
 
 function fpm(i) {
@@ -92,9 +93,12 @@ function fpp(i) {
 buttonStart.addEventListener('click', startLife);
 buttonStop.addEventListener('click', () => {
     clearTimeout(timer);
+    buttonStart.innerText='Продолжить'
+    buttonStart.disabled=false
 });
 buttonClear.addEventListener('click', () => {
     document.querySelector('#count').innerText = 0;
+    buttonStart.innerHTML='Старт'
     mass=[]
     contextCanvas.clearRect(0, 0, size*10, size*10);
     goLife();
